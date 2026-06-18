@@ -14,7 +14,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
           <div className="flex-shrink-0 font-semibold text-gray-900 text-lg">
-            Parking Intelligence
+            Parking Violation System
           </div>
           <div className="flex space-x-1 overflow-x-auto">
             {navItems.map(({ to, label }) => (

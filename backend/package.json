@@ -1,7 +1,7 @@
 {
-  "name": "parking-intelligence-backend",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "Express API backend for the Parking Intelligence System - serves pre-computed ML predictions from CSV files",
+  "description": "Express API backend for the Parking Violation System - serves pre-computed ML predictions from CSV files",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
