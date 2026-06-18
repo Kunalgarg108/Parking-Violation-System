@@ -68,31 +68,31 @@ This system addresses these challenges by providing AI-powered risk predictions,
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                        Frontend                                      │
+│                        Frontend                                     │
 │         React 18 + Tailwind CSS + Leaflet + Recharts                │
 │                                                                     │
-│  ┌───────────┐ ┌──────────┐ ┌───────────┐ ┌────────┐ ┌──────────┐ │
-│  │ Dashboard │ │ Risk Map │ │ Analytics │ │ Patrol │ │ Repeat   │ │
-│  │           │ │ (Leaflet)│ │ (Recharts)│ │Planner │ │ Offenders│ │
-│  └─────┬─────┘ └────┬─────┘ └─────┬─────┘ └───┬────┘ └────┬─────┘ │
+│  ┌───────────┐ ┌──────────┐ ┌───────────┐ ┌────────┐ ┌──────────┐   │
+│  │ Dashboard │ │ Risk Map │ │ Analytics │ │ Patrol │ │ Repeat   │   │
+│  │           │ │ (Leaflet)│ │ (Recharts)│ │Planner │ │ Offenders│   │
+│  └─────┬─────┘ └────┬─────┘ └─────┬─────┘ └───┬────┘ └────┬─────┘   │
 │        │             │             │            │           │       │
 │        └─────────────┴─────────────┴────────────┴───────────┘       │
 │                              │                                      │
-│                    TanStack Query + Axios                            │
+│                    TanStack Query + Axios                           │
 └──────────────────────────────┬──────────────────────────────────────┘
                                │ HTTP (REST JSON)
 ┌──────────────────────────────┴──────────────────────────────────────┐
-│                        Backend (Express API)                         │
+│                        Backend (Express API)                        │
 │                                                                     │
-│  ┌────────────────┐  ┌──────────────────┐  ┌────────────────────┐  │
-│  │  Route Handlers │  │  Business Logic  │  │  In-Memory Cache   │  │
-│  │  (REST endpoints)│  │  (Services)      │  │  (Parsed CSV data) │  │
-│  └────────┬───────┘  └────────┬─────────┘  └─────────┬──────────┘  │
+│  ┌────────────────┐  ┌──────────────────┐  ┌────────────────────┐   │
+│  │ Route Handlers │  │  Business Logic  │  │  In-Memory Cache   │   │
+│  │(REST endpoints)│  │  (Services)      │  │  (Parsed CSV data) │   │
+│  └────────┬───────┘  └────────┬─────────┘  └─────────┬──────────┘   │
 │           └───────────────────┴───────────────────────┘             │
 └──────────────────────────────┬──────────────────────────────────────┘
                                │ File I/O (startup only)
 ┌──────────────────────────────┴──────────────────────────────────────┐
-│                        Data Layer (CSV Files)                        │
+│                        Data Layer (CSV Files)                       │
 │                                                                     │
 │  latest_risk_predictions.csv    (759 zone predictions)              │
 │  top_enforcement_zones.csv      (Pre-ranked top zones)              │
@@ -102,14 +102,14 @@ This system addresses these challenges by providing AI-powered risk predictions,
 └──────────────────────────────┬──────────────────────────────────────┘
                                │ Generated offline (batch)
 ┌──────────────────────────────┴──────────────────────────────────────┐
-│                   ML Service (Offline Only)                          │
+│                   ML Service (Offline Only)                         │
 │                                                                     │
 │  XGBRegressor (severity prediction)                                 │
 │  Activity Probability Classifier                                    │
 │  SHAP Explainer (feature importance)                                │
 │  H3 Spatial Indexing                                                │
 │                                                                     │
-│  ⚠️  NOT used at runtime in V1 — generates CSVs offline only        │
+│  ⚠️  NOT used at runtime in V1 — generates CSVs offline only       │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -340,14 +340,6 @@ Normalized to 0–100 scale.
 ![Risk Map H3 Grid Screenshot](docs/screenshots/risk-map-h3.png)
 *H3 hexagonal grid colored by priority level*
 
-### Risk Map - Heatmap
-![Risk Map Heatmap Screenshot](docs/screenshots/risk-map-heatmap.png)
-*Continuous heatmap visualization of risk intensity*
-
-### Zone Details Drawer
-![Zone Details Screenshot](docs/screenshots/zone-details.png)
-*Detailed zone information with risk metrics and recommended actions*
-
 ### Analytics
 ![Analytics Screenshot](docs/screenshots/analytics.png)
 *Risk distribution histogram, priority distribution, and SHAP feature importance*
@@ -362,29 +354,7 @@ Normalized to 0–100 scale.
 
 > **Note:** Replace placeholder images above with actual screenshots. Create a `docs/screenshots/` directory and add PNG files with the names shown.
 
-## Future Enhancements
-
-- **Real-time ML Inference** — Connect FastAPI service for live predictions instead of static CSVs
-- **Time-series Analysis** — Historical trend tracking and temporal pattern detection
-- **Per-zone SHAP** — Zone-specific feature importance (currently global only)
-- **Patrol Route Optimization** — TSP-based route planning for assigned zones
-- **Real-time Data Ingestion** — Stream violation data from sensors/cameras
-- **Alert System** — Push notifications when zones exceed risk thresholds
-- **Multi-city Support** — Extend beyond Bengaluru to other cities
-- **Mobile App** — Patrol officer companion app with turn-by-turn navigation
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/my-feature`)
-3. Commit your changes (`git commit -m 'Add my feature'`)
-4. Push to the branch (`git push origin feature/my-feature`)
-5. Open a Pull Request
-
 ## License
 
 This project is licensed under the MIT License.
 
----
-
-Built with machine learning, geospatial intelligence, and modern web technologies for smarter parking enforcement in Bengaluru, India.
